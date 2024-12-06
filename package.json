@@ -1,0 +1,15 @@
+{
+  "name": "school-api",
+  "version": "1.0.0",
+  "description": "simple api to manage classes and students from a school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ngoc Le aka Ari Le",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1"
+  }
+}

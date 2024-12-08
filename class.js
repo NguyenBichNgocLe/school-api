@@ -47,16 +47,16 @@ ClassRouter.delete("/:id", (req, res) => {
     const classInfo = findByID(parseInt(id));
     if(!classInfo) return res.status(404).send("Class not found");
 
-    if(students.some((student) => student.classId === id)) 
+    if(students.some((student) => student.className.toLowerCase() === classInfo.name.toLowerCase())) 
         return res.status(400).send("Cannot delete a class with studetns");
 
-    const classIndex = classes.findIndex((obj) => obj.id === id);
+    const classIndex = classes.findIndex((obj) => obj.id === parseInt(id));
     const deletedClass = classes.splice(classIndex, 1);
-    res.send(deletedClass);
+    return res.send(deletedClass);
 });
 
 // Helper functions
 const findByID = (id) => classes.find((obj) => obj.id === id);
-const isDuplicatedName = (name) => classes.some((obj) => obj.name === name);
+const isDuplicatedName = (name) => classes.some((obj) => obj.name.toLowerCase() === name.toLowerCase());
 
 module.exports = ClassRouter;
